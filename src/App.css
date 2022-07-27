@@ -1,1 +1,4 @@
 /* Your CSS Here */
+.no-bar::-webkit-scrollbar {
+    width: 0;
+}

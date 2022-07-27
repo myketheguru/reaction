@@ -9,9 +9,9 @@ import Img from "../Conversations-Images/IMG_0394.jpg";
 
 const Conversations = () => {
   return (
-    <div className="conversations text-white p-2 grid grid-rows-[auto_1fr_auto] overflow-auto">
+    <div className="conversations text-white grid grid-rows-[auto_1fr_auto] overflow-auto no-bar">
       {/* Conversations */}
-      <nav className="flex justify-between h-20 items-center p-8">
+      <nav className="flex justify-between h-20 items-center p-8 sticky top-0 bg-[#161719] z-10">
         <div className="flex gap-4">
           <div>
             <AiOutlineAppstore size={24} />
@@ -90,7 +90,7 @@ const Conversations = () => {
         </div>
       </div>
 
-      <footer className="flex gap-4 bg-[#2c3436] rounded-lg mx-8 my-2 h-12 items-center p-4">
+      <footer className="flex gap-4 bg-[#2c3436] rounded-lg mx-8 my-2 h-12 items-center p-4 sticky bottom-2">
         <figure className="h-[32px] w-[32px] bg-white rounded-full"></figure>
         <input
           type="text"

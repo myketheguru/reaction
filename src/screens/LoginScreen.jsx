@@ -44,7 +44,7 @@ const LoginScreen = () => {
             </button>
         </div>
 
-        <img src={dl} alt="" className='absolute rotate-90 h-[60%] lg:top-[160px] lg:left-[20%] left-[45%] -top-10' />
+        <img src={dl} alt="" className='absolute lg:hidden rotate-90 h-[60%] lg:top-[160px] lg:left-[20%] left-[45%] -top-10' />
     </div>
   )
 }
