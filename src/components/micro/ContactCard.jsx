@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
-import useStore from '../store'
+import useStore from '../../store'
 
 const ContactCard = ({ img }) => {
   const navigate = useNavigate()

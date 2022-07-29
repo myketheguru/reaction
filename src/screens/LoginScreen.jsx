@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import { IoPaperPlane } from "react-icons/io5";
-import bg from '../assets/login-bg.jpg'
-import dl from '../assets/dl.svg'
+import bg from '../assets/images/login-bg.jpg'
+import dl from '../assets/images/dl.svg'
 // import useStore from '../store';
 
 const LoginScreen = () => {

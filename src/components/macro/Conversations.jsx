@@ -4,12 +4,12 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import { HiOutlineVideoCamera, HiPaperAirplane } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
 import { CgImage } from "react-icons/cg";
-import Img from "../Conversations-Images/IMG_0394.jpg";
-import me from '../assets/12345.jpg'
+import Img from "../../assets/images/IMG_0394.jpg";
+import me from '../../assets/images/12345.jpg'
 import { RiApps2Line } from "react-icons/ri";
 import { BsDot, BsMic } from "react-icons/bs";
 import { FaPen } from "react-icons/fa";
-import useStore from "../store";
+import useStore from "../../store";
 
 const Conversations = () => {
   const convo = useRef()

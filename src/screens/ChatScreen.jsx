@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Contacts from '../components/Contacts'
+import Contacts from '../components/macro/Contacts'
 
 const ChatScreen = () => {
   return (
