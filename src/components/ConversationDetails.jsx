@@ -1,109 +1,133 @@
-import React from 'react'
-import {BsChatSquareDots} from 'react-icons/bs'
-import {ImCancelCircle} from 'react-icons/im'
+import { useState } from 'react'
+import {BsChat, BsChatSquareDots, BsFillFolderFill, BsTelephone} from 'react-icons/bs'
 import {IoIosArrowDown} from 'react-icons/io'
-import {CgProfile} from 'react-icons/cg'
-import {FiPhoneCall} from 'react-icons/fi'
-import {BsChatRight} from 'react-icons/bs'
-import {BiCheckbox} from 'react-icons/bi'
-import {AiOutlineStar} from 'react-icons/ai'
-import {BsFileEarmarkMinus} from 'react-icons/bs'
-import {AiFillCheckSquare} from 'react-icons/ai'
-import Img from '../images/profile photo.jpeg'
+import {IoCloseOutline} from 'react-icons/io5'
+import img from '../assets/12345.jpg'
+import CustomCheckbox from './CustomCheckbox'
+import FavoriteCheck from './FavoriteCheck'
 
 
 
 const ConversationDetails = () => {
-  return (
-    <div className='w-[300px] bg-[#191D1E]'>
+  const [newTasksOverlay, setNewTasksOverlay] = useState(true)
 
-        <div className="header">
-          <BsChatSquareDots size={25} />
-          <h2>Chat Details</h2>
-          {/* <ImCancelCircle size={25} color= "gray" /> */}
-          <div className='cancel'>X</div>
+  return (
+    <div className='w-[300px] bg-[#191D1E] fixed lg:relative -right-[100%] lg:right-0 p-8 py-4 flex flex-col gap-8 overflow-y-auto no-bar'>
+
+        <div className="header flex items-center gap-5">
+          <BsChatSquareDots size={16} />
+          <h2 className='font-medium text-sm'>Chat Details</h2>
+
+          <button className='cancel ml-auto bg-[#2a2f30] p-1 rounded-full'>
+            <IoCloseOutline size={18} />
+          </button>
         </div>
         
-        <div  className='members'>
-
-            <div className = "member-title">
-              <p class="text-sm text-stone-500" > Members <span class = "text-lg text-white" > 8 </span> </p>
-
-              <IoIosArrowDown color='yellow' />
+        <div className='members flex gap-2 flex-col'>
+            <div className="member-title flex items-center justify-between mb-2">
+              <p class="text-xs text-stone-500"> Members <span class="text-[12px] text-white ml-[2px]">8</span> </p>
+              <IoIosArrowDown size={14} color='yellow' />
             </div>
 
-            <div className= "user">
-              <CgProfile />
-              <h3> Ingrid Krol <span>Creator</span> </h3>
-              <FiPhoneCall />
-              <BsChatRight />
+            <div className="user flex items-center gap-2">
+              <div className="card-pics rounded-[20px] bg-[#242527] border-[#242527] object-contain h-6 w-6">
+                <img src={img} alt="" className='rounded-full w-full' />
+              </div>
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>Ingrid Krol <span className='font-normal text-[9px] text-yellow-400 relative -top-1'>Creator</span> </h3>
+              <BsTelephone className='text-gray-400 mr-1' />
+              <BsChat className='text-gray-400' />
             </div>
 
-            <div className='user'>
-              <CgProfile />
-              <h3> Thomas Hayes  </h3>
-              <FiPhoneCall />
-              <BsChatRight />
+            <div className='user flex items-center gap-2'>
+                <div className="card-pics rounded-[20px] bg-[#242527] border-[#242527] object-contain h-6 w-6">
+                  <img src={img} alt="" className='rounded-full w-full' />
+                </div>
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>Thomas Hayes  </h3>
+              <BsTelephone className='text-gray-600 mr-1' />
+              <BsChat className='text-gray-400' />
             </div>
 
-            <div className='user'>
-              <CgProfile />
-              <h3> Colddecember  </h3>
-              <BsChatRight />
+            <div className='user flex items-center gap-2'>
+                <div className="card-pics rounded-[20px] bg-[#242527] border-[#242527] object-contain h-6 w-6">
+                  <img src={img} alt="" className='rounded-full w-full' />
+                </div>
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>Colddecember  </h3>
+              <BsChat className='text-gray-400' />
             </div>
 
         </div>
 
-        <div className='media'>
+        <div className='media mt-5'>
+          <div className="member-title flex items-center justify-between mb-4">
+            <p class="text-xs text-stone-500"> Media <span class="text-[12px] text-white ml-[2px]">1369</span> </p>
+            <IoIosArrowDown size={14} color='yellow' />
+          </div>
 
-    
-              <div className='media-details'>
-                <p class="text-sm text-stone-500"> Media <span class = "text-lg text-white"> 1369 </span> </p>
-                <IoIosArrowDown color='yellow'/>
-              </div>
-
-              <div className='image-card'>
-                  <img src={Img} alt="image" />
-                  <img src={Img} alt="image" />
-                  <img src={Img} alt="image" />
-                  <div className='media-count'>+1366</div>
-              </div>
-    
-
+          <div className='media-list flex gap-[6px]'>
+              <figure className='w-[50px] h-[50px]'>
+                <img className='w-full rounded-lg' src={img} alt="" />
+              </figure>
+              <figure className='w-[50px] h-[50px]'>
+                <img className='w-full rounded-lg' src={img} alt="" />
+              </figure>
+              <figure className='w-[50px] h-[50px]'>
+                <img className='w-full rounded-lg' src={img} alt="" />
+              </figure>
+              
+              <div className='media-count w-[50px] h-[50px] rounded-lg bg-[#28292D] flex items-center justify-center p-3 text-[10px] font-medium'>+1366</div>
+          </div>
         </div>
 
-        <div className='tasks'>
+        <div className='tasks flex flex-col gap-4 relative overflow-hidden' style={{ height: newTasksOverlay ? '140px' : 'auto' }}>
 
-          <div className='task-details'>
-            <p class="text-sm text-stone-500">Tasks <span class = "text-lg text-white" > 19 </span> </p>
-            <IoIosArrowDown color='yellow'/>
+          <div className="member-title flex items-center justify-between mb-2">
+            <p class="text-xs text-stone-500"> Tasks <span class="text-[12px] text-white ml-[2px]">19</span> </p>
+            <IoIosArrowDown size={14} color='yellow' />
           </div>
 
-          <div className='task-list'>
-            <BiCheckbox />
-            <AiOutlineStar color='yellow'/>
-            <h3>Design System</h3>
-            <BsFileEarmarkMinus />
+          <div className='task flex gap-3 items-center'>
+            <CustomCheckbox />
+              <FavoriteCheck />
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>Design System</h3>
+            <BsFillFolderFill className='text-gray-500' />
           </div>
 
-          <div className='task-list'>
-            <AiFillCheckSquare color= 'blue' />
-            <AiOutlineStar />
-            <h3>Dark Mode</h3>
-           
+          <div className='task flex gap-3 items-center'>
+            <CustomCheckbox />
+              <FavoriteCheck />
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>Dark Mode</h3>
+            <BsFillFolderFill className='text-gray-500' />
+          </div>
+          
+          <div className='task flex gap-3 items-center'>
+            <CustomCheckbox />
+              <FavoriteCheck />
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>New Content Page</h3>
+            <BsFillFolderFill className='text-gray-500' />
           </div>
 
-          <div className='task-list'>
-            <BiCheckbox />
-            <AiOutlineStar />
-            <h3>New Content Page</h3>
+          <div className='task flex gap-3 items-center'>
+            <CustomCheckbox />
+              <FavoriteCheck />
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>New Content Page</h3>
+            <BsFillFolderFill className='text-gray-500' />
           </div>
 
-          <div className='new-task'>
-            <div className='two'>2</div>
-            <h3>New task</h3>
-            <IoIosArrowDown color='yellow'/>
+          <div className='task flex gap-3 items-center'>
+            <CustomCheckbox />
+              <FavoriteCheck />
+              <h3 className='mr-auto text-xs text-gray-300 font-medium'>New Content Page</h3>
+            <BsFillFolderFill className='text-gray-500' />
           </div>
+
+          {newTasksOverlay &&
+            <div onClick={() => setNewTasksOverlay(false)} className='new-task bg-[linear-gradient(to_bottom,_#0000,20%,_#191D1E)] absolute w-full h-[120px] top-5 flex items-end justify-center gap-2 text-xs p-1 cursor-pointer'>
+            <button className='top-5 flex items-center justify-center gap-2'>
+              <div className='bg-[#FF754C] rounded-xl h-6 w-6 text-xs font-semibold text-white flex items-center justify-center'>2</div>
+              <h3 className='font-medium'>New tasks</h3>
+              <IoIosArrowDown color='yellow'/>
+            </button>
+          </div>}
         </div>
 
 
