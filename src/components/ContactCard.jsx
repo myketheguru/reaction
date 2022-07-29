@@ -3,7 +3,7 @@ import React from 'react'
 const ContactCard = ({ img }) => {
   return (
     <div className="thomas p-2 flex gap-3 cursor-pointer transition-all active:scale-95 hover:bg-[#343538] rounded-xl">
-        <div className="card-pics rounded-[20px] bg-[#242527] border-[#242527] object-contain h-12 w-12">
+        <div className="card-pics rounded-[20px] bg-[#242527] border-[#242527] object-contain h-[44px] w-[44px]">
         <img src={img} alt="" className='rounded-full' />
         </div>
         <div className="details flex flex-col gap-1">

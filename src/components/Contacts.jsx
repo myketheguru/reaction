@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { BsDot, BsPlus } from 'react-icons/bs'
 import { FiChevronDown } from 'react-icons/fi'
 import { FaRegStar } from 'react-icons/fa'
@@ -11,15 +11,16 @@ import Img from '../assets/12345.jpg'
 import ContactCard from './ContactCard'
 
 const Contacts = () => {
+  const [showNotification, setShowNotification] = useState(false)
   return (
-    <div className='w-[350px] border-r border-[#202020] p-8 py-4 flex flex-col'>
+    <div className='w-[320px] border-r border-[#202020] p-8 py-4 flex flex-col overflow-y-auto'>
       {/* profile card section */}
         <div className="profile-card flex w-100% h-35 justify-between">
-          <div className="card-pics relative rounded-[20px] bg-[#242527] border-[#242527] border-[6px] object-contain h-14 w-14">
+          <div className="card-pics relative rounded-[16px] bg-[#242527] border-[#242527] border-[6px] object-contain h-[50px] w-[50px]">
             <img src={Img} alt="" className='rounded-xl' />
             <div className="indicator absolute h-4 w-[3px] bg-blue-500 rounded-md top-1/2 left-[-6px] -translate-y-1/2"></div>
           </div>
-          <div className="msg-menu flex gap-1 items-center cursor-pointer">
+          <div className="msg-menu flex gap-1 items-center cursor-pointer" onClick={() => setShowNotification(!showNotification)}>
             <IoChatbubbles className='text-blue-500' size={22} />
             <p className='font-semibold'>All</p>
             <FiChevronDown className='text-gray-500' size={18} />
@@ -27,15 +28,16 @@ const Contacts = () => {
         </div>
 
         {/* Workspace section */}
-        <div className="workspace mt-4 bg-[#2a2b2d] rounded-[20px] flex-row">
+        {showNotification &&
+          <div className="workspace mt-4 bg-[#2a2b2d] rounded-[20px] flex-row">
 
           {/*thomas sec  */}
-          <div className="thomas p-5 py-4 flex gap-3 border-b border-[#343538]">
+          <div className="p-4 py-3 flex gap-3 border-b border-[#343538]">
             <div className="card-pics rounded-[16px] bg-[#242527] border-[#242527] border-[5px] object-contain h-12 w-12">
               <img src={Img} alt="" className='rounded-xl' />
             </div>
-            <div className="thomas-name">
-              <p className='font-semibold'>Thomas</p> 
+            <div className="name">
+              <p className='font-semibold text-sm'>Thomas</p> 
               <div className='flex items-center gap-1'>
                 <HiBell className='text-orange-500' />
                 <p className='text-sm'>219 <span className='text-xs text-gray-400'>new</span></p>
@@ -45,10 +47,10 @@ const Contacts = () => {
           </div>
 
             {/* Stuart sec */}
-          <div className="stuart-books p-5 py-4 flex gap-3 text-sm border-b border-[#343538]">
+          <div className="stuart-books p-4 py-3 flex gap-3 text-sm border-b border-[#343538]">
             <div className="av-img flex items-center justify-center bg-[#44A8F6] text-[20px] font-extrabold rounded-[15px] w-12 h-12">S</div>
             <div className="stuart-name flex flex-col gap-1 relative">
-              <p>Stuart Brooks</p> 
+              <p className='text-sm'>Stuart Brooks</p> 
               <div className="requester flex items-center gap-1">
                 <figure className='w-4 h-4 rounded-full bg-yellow-500'></figure>
                 <p className='text-xs'>1 <span className='text-gray-400'>new request</span></p>
@@ -57,44 +59,44 @@ const Contacts = () => {
           </div>
           
           {/* create workspace */}
-          <div className="worksection flex justify-center items-center gap-2 p-3">
+          <div className="worksection flex justify-center items-center gap-2 p-3 mb-4">
             <div className='flex items-center bg-[#715bfc] w-4 h-4 rounded-full'>
               <BsPlus />
             </div>
             <p className='text-[14px] font-medium'>Create new workspace</p>
           </div>
-        </div>
+        </div>}
 
         {/* Contacts section */}
-        <div className="contacts mt-6 p-1 flex flex-col flex-1">
+        <div className="contacts p-1 flex flex-col flex-1">
           <header className='flex items-center justify-between text-gray-400 py-4'>
             <div className="left flex items-center">
-              <p className='text-xl text-gray-400 font-medium'>Messages</p>
+              <p className='text-lg text-gray-400 font-medium'>Messages</p>
               <div className="indicator w-[4px] h-[4px] rounded-full bg-red-600 mx-3 mr-2"></div>
               <FiChevronDown className='text-[#a57b6e]' size={18} />
             </div>
 
             <div className="right flex items-center gap-3">
               <button>
-                <RiEditCircleLine size={22} />
+                <RiEditCircleLine size={20} />
               </button>
               <button className='relative -top-[1px]'>
-                <FaRegStar size={22} />
+                <FaRegStar size={20} />
               </button>
             </div>
           </header>
-          <div className="search-area bg-[#1B1D1E] text-gray-500 rounded-lg h-10 relative text-sm">
+          <div className="search-area bg-[#1B1D1E] text-gray-500 rounded-lg h-9 relative text-xs">
             <input type="text" placeholder='Search' className='w-full h-full rounded-lg p-4 pl-9 bg-transparent outline-none' />
-            <RiSearchLine className='absolute top-1/2 -translate-y-1/2 left-2' size={17} />
+            <RiSearchLine className='absolute top-1/2 -translate-y-1/2 left-3' size={15} />
           </div>
-          <div className="contacts-list py-3 flex flex-col gap-2 overflow-auto max-h-[330px] no-bar">
+          <div className={`contacts-list py-3 flex flex-col gap-2 overflow-auto ${showNotification ? 'max-h-[280px]' : ''} no-bar`}>
             <ContactCard img={Img} />
             <ContactCard img={Img} />
             <ContactCard img={Img} />
             <ContactCard img={Img} />
             <ContactCard img={Img} />
           </div>
-          <div className="live-chat bg-[#252628] h-16 rounded-2xl p-5 text-gray-600 flex items-center">
+          <div className="live-chat bg-[#252628] w-[260px] h-16 rounded-2xl p-5 text-gray-600 flex items-center bottom-5" style={{ position: showNotification ? 'static' : 'absolute' }}>
             <button className="flex">
               <BsDot size={24} />
               <BsDot size={24} className="relative -left-4" />
