@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { IoPaperPlane } from "react-icons/io5";
 import bg from '../assets/login-bg.jpg'
 import dl from '../assets/dl.svg'
-import useStore from '../store';
+// import useStore from '../store';
 
 const LoginScreen = () => {
-    const setLoading = useStore(state => state.setLoading)
-    const setLoggedIn = useStore(state => state.setLoggedIn)
+    // const setLoading = useStore(state => state.setLoading)
+    // const setLoggedIn = useStore(state => state.setLoggedIn)
     const [usernameEmail, setUsernameEmail] = useState('')
     const [password, setPassword] = useState('')
 
