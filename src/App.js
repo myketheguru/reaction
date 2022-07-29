@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import ConversationScreen from './components/ConversationScreen'
-import NoSelectedChat from './components/NoSelectedChat'
+import ConversationScreen from './components/macro/ConversationScreen'
+import NoSelectedChat from './components/macro/NoSelectedChat'
 import ChatScreen from './screens/ChatScreen'
 import LoginScreen from './screens/LoginScreen'
 

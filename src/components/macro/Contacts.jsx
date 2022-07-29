@@ -7,9 +7,9 @@ import { TiWiFi } from 'react-icons/ti'
 import { RiEditCircleLine, RiSearchLine } from 'react-icons/ri'
 import { IoMdCheckmark } from 'react-icons/io'
 import { IoChatbubbles } from 'react-icons/io5'
-import Img from '../assets/12345.jpg'
-import ContactCard from './ContactCard'
-import useStore from '../store'
+import Img from '../../assets/images/12345.jpg'
+import ContactCard from '../micro/ContactCard'
+import useStore from '../../store'
 
 const Contacts = () => {
   const [showNotification, setShowNotification] = useState(false)

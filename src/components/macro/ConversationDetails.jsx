@@ -2,10 +2,10 @@ import { useState } from 'react'
 import {BsChat, BsChatSquareDots, BsFillFolderFill, BsTelephone} from 'react-icons/bs'
 import {IoIosArrowDown} from 'react-icons/io'
 import {IoCloseOutline} from 'react-icons/io5'
-import img from '../assets/12345.jpg'
-import useStore from '../store'
-import CustomCheckbox from './CustomCheckbox'
-import FavoriteCheck from './FavoriteCheck'
+import img from '../../assets/images/12345.jpg'
+import useStore from '../../store'
+import CustomCheckbox from '../micro/CustomCheckbox'
+import FavoriteCheck from '../micro/FavoriteCheck'
 
 
 
