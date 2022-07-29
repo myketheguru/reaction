@@ -1,12 +1,20 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import ConversationScreen from './components/ConversationScreen'
+import NoSelectedChat from './components/NoSelectedChat'
 import ChatScreen from './screens/ChatScreen'
-// import LoginScreen from './screens/LoginScreen'
+import LoginScreen from './screens/LoginScreen'
 
 const App = () => {
   return (
     <div className="app">
-      <ChatScreen />
-      {/* <LoginScreen /> */}
+      <Routes>
+        <Route path='/' element={<ChatScreen />}>
+          <Route index element={<NoSelectedChat />} />
+          <Route path='/:conversation_id' element={<ConversationScreen />} />
+        </Route>
+        <Route path='/login' element={<LoginScreen />} />
+      </Routes>
     </div>
   )
 }

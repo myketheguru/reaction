@@ -9,11 +9,14 @@ import { IoMdCheckmark } from 'react-icons/io'
 import { IoChatbubbles } from 'react-icons/io5'
 import Img from '../assets/12345.jpg'
 import ContactCard from './ContactCard'
+import useStore from '../store'
 
 const Contacts = () => {
   const [showNotification, setShowNotification] = useState(false)
+  const contactsOpen = useStore(state => state.contactsOpen)
+
   return (
-    <div className='w-[320px] border-r border-[#202020] p-8 py-4 flex flex-col overflow-y-auto'>
+    <div className={`w-[320px] border-r border-[#202020] p-4 lg:px-8 py-4 flex flex-col overflow-y-auto fixed md:static h-full z-50 ${contactsOpen ? 'left-0' : '-left-full'} transition-all bg-[#161719] no-bar`}>
       {/* profile card section */}
         <div className="profile-card flex w-100% h-35 justify-between">
           <div className="card-pics relative rounded-[16px] bg-[#242527] border-[#242527] border-[6px] object-contain h-[50px] w-[50px]">

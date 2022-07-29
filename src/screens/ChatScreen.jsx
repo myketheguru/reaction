@@ -1,14 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import Contacts from '../components/Contacts'
-import ConversationDetails from '../components/ConversationDetails'
-import Conversations from '../components/Conversations'
 
 const ChatScreen = () => {
   return (
-    <div className='chat_screen h-screen grid grid-cols-[auto_1fr_auto] bg-[#161719] text-white'>
+    <div className='chat_screen h-screen grid grid-cols-1 md:grid-cols-[auto_1fr] bg-[#161719] overflow-x-hidden text-white'>
         <Contacts />
-        <Conversations />
-        <ConversationDetails />
+        <Outlet />
     </div>
   )
 }

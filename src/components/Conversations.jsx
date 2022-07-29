@@ -9,9 +9,14 @@ import me from '../assets/12345.jpg'
 import { RiApps2Line } from "react-icons/ri";
 import { BsDot, BsMic } from "react-icons/bs";
 import { FaPen } from "react-icons/fa";
+import useStore from "../store";
 
 const Conversations = () => {
   const convo = useRef()
+  const contactsOpen = useStore(state => state.contactsOpen)
+  const chatDetailsOpen = useStore(state => state.chatDetailsOpen)
+  const setContactsOpen = useStore(state => state.setContactsOpen)
+  const setChatDetailsOpen = useStore(state => state.setChatDetailsOpen)
 
   useEffect(() => {
     if (!convo.current) return
@@ -25,11 +30,11 @@ const Conversations = () => {
   }, [])
 
   return (
-    <div className="conversations text-white grid grid-rows-[auto_1fr_auto] overflow-auto scroll-smooth no-bar" ref={convo}>
+    <div className="conversations text-white grid grid-rows-[auto_1fr_auto] flex-1 w-full overflow-auto scroll-smooth no-bar" ref={convo}>
       {/* Conversations */}
       <nav className="flex justify-between h-[70px] items-center p-8 sticky top-0 bg-[linear-gradient(to_bottom,_#161719,70%,_#161719ee)] shadow-xl shadow-[#161719ee] z-10">
         <div className="flex gap-4 items-center">
-          <button className="text-gray-400">
+          <button className="text-gray-400" onClick={() => setContactsOpen(!contactsOpen)}>
             <RiApps2Line size={22} />
           </button>
           <div className="flex gap-2 text-[18px] items-center font-medium">
@@ -44,20 +49,20 @@ const Conversations = () => {
           <button>
             <FiPhoneCall size={20} />
           </button>
-          <button>
+          <button className="hidden md:inline-block">
             <CgImage size={20} />
           </button>
-          <button>
+          <button className="hidden md:inline-block">
             <TbNotes size={21} />
           </button>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 bg-[#1f2022] p-1 px-2 rounded-full cursor-pointer" onClick={() => setChatDetailsOpen(!chatDetailsOpen)}>
           <figure className="h-[24px] w-[24px] bg-white rounded-full overflow-hidden">
-          <img src={me} alt="" />
+            <img src={me} alt="" />
           </figure>
-          <figure className="h-[24px] w-[24px] bg-white rounded-full overflow-hidden">
-          <img src={Img} alt="" />
+          <figure className="h-[24px] w-[24px] bg-white rounded-full overflow-hidden hidden md:block">
+            <img src={Img} alt="" />
           </figure>
           <figure className="h-[24px] w-[24px] bg-[#2b2e30] text-[10px] flex justify-center items-center rounded-full overflow-hidden">
             6+
@@ -65,8 +70,8 @@ const Conversations = () => {
         </div>
       </nav>
 
-      <div className="px-16 py-3 flex flex-col gap-4 text-xs">
-        <p className="flex justify-center text-gray-400 text-[11px]">Fri 29 Jul 2:42pm</p>
+      <div className="px-14 md:px-16 py-3 flex flex-col gap-4 text-xs">
+        <p className="flex justify-center bg-[#1f2022] p-1 px-2 rounded-full self-center border border-gray-800 text-gray-400 text-[11px]">Fri 29 Jul 2:42pm</p>
         <div className="flex flex-col items-end relative gap-2">
           <div>
             <span> You</span>
@@ -94,11 +99,11 @@ const Conversations = () => {
           <p className="bg-[#2c3436] py-2 px-4 rounded-full rounded-tl-none">
             Okay sweetie
           </p>
-          <div className="img-group flex gap-2">
-            <figure className="h-[250px] w-[200px] bg-white rounded-lg overflow-hidden">
+          <div className="img-group grid grid-cols-2 gap-2">
+            <figure className="max-w-[200px] bg-white rounded-lg overflow-hidden">
               <img src={Img} alt="" />
             </figure>
-            <figure className="h-[250px] w-[200px] bg-white rounded-lg overflow-hidden">
+            <figure className="max-w-[200px] bg-white rounded-lg overflow-hidden">
               <img src={Img} alt="" />
             </figure>
           </div>
@@ -160,7 +165,7 @@ const Conversations = () => {
 
           <div className="flex gap-2 items-center whitespace-nowrap bg-[#333b3d] px-2 cursor-pointer rounded-full">
             <TbNotes className="text-yellow-500" />
-            <p className="text-[11px] text-gray-300">1 unsaved draft</p>
+            <p className="text-[11px] text-gray-300 hidden md:block">1 unsaved draft</p>
           </div>
           <BsDot className="self-center text-gray-500" size={28} />
           <div className="flex items-center gap-2">

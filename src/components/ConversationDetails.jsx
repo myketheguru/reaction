@@ -3,6 +3,7 @@ import {BsChat, BsChatSquareDots, BsFillFolderFill, BsTelephone} from 'react-ico
 import {IoIosArrowDown} from 'react-icons/io'
 import {IoCloseOutline} from 'react-icons/io5'
 import img from '../assets/12345.jpg'
+import useStore from '../store'
 import CustomCheckbox from './CustomCheckbox'
 import FavoriteCheck from './FavoriteCheck'
 
@@ -10,22 +11,24 @@ import FavoriteCheck from './FavoriteCheck'
 
 const ConversationDetails = () => {
   const [newTasksOverlay, setNewTasksOverlay] = useState(true)
+  const chatDetailsOpen = useStore(state => state.chatDetailsOpen)
+  const setChatDetailsOpen = useStore(state => state.setChatDetailsOpen)
 
   return (
-    <div className='w-[300px] bg-[#191D1E] fixed lg:relative -right-[100%] lg:right-0 p-8 py-4 flex flex-col gap-8 overflow-y-auto no-bar'>
+    <div className={`w-[300px] bg-[#191D1E] h-full fixed lg:relative ${chatDetailsOpen ? 'right-0 z-50' : '-right-[100%]'} ${chatDetailsOpen ? 'lg:right-0' : 'lg:fixed lg:-right-full'} p-8 py-4 flex flex-col gap-8 overflow-y-auto transition-all no-bar`}>
 
         <div className="header flex items-center gap-5">
           <BsChatSquareDots size={16} />
           <h2 className='font-medium text-sm'>Chat Details</h2>
 
-          <button className='cancel ml-auto bg-[#2a2f30] p-1 rounded-full'>
+          <button className='cancel ml-auto bg-[#2a2f30] p-1 rounded-full' onClick={() => setChatDetailsOpen(false)}>
             <IoCloseOutline size={18} />
           </button>
         </div>
         
         <div className='members flex gap-2 flex-col'>
             <div className="member-title flex items-center justify-between mb-2">
-              <p class="text-xs text-stone-500"> Members <span class="text-[12px] text-white ml-[2px]">8</span> </p>
+              <p className="text-xs text-stone-500"> Members <span className="text-[12px] text-white ml-[2px]">8</span> </p>
               <IoIosArrowDown size={14} color='yellow' />
             </div>
 
@@ -59,7 +62,7 @@ const ConversationDetails = () => {
 
         <div className='media mt-5'>
           <div className="member-title flex items-center justify-between mb-4">
-            <p class="text-xs text-stone-500"> Media <span class="text-[12px] text-white ml-[2px]">1369</span> </p>
+            <p className="text-xs text-stone-500"> Media <span className="text-[12px] text-white ml-[2px]">1369</span> </p>
             <IoIosArrowDown size={14} color='yellow' />
           </div>
 
@@ -81,7 +84,7 @@ const ConversationDetails = () => {
         <div className='tasks flex flex-col gap-4 relative overflow-hidden' style={{ height: newTasksOverlay ? '140px' : 'auto' }}>
 
           <div className="member-title flex items-center justify-between mb-2">
-            <p class="text-xs text-stone-500"> Tasks <span class="text-[12px] text-white ml-[2px]">19</span> </p>
+            <p className="text-xs text-stone-500"> Tasks <span className="text-[12px] text-white ml-[2px]">19</span> </p>
             <IoIosArrowDown size={14} color='yellow' />
           </div>
 

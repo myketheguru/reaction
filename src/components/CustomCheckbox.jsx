@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 
-const CustomCheckbox = ({ checked = false, onChange, className, ...props}) => {
+const CustomCheckbox = ({ checked = false, onChange = () => {}, className, ...props}) => {
     const [isChecked, setIsChecked] = useState(checked)
   return (
     <div className={`custom-checkbox w-[16px] h-[16px] cursor-pointer rounded-md border overflow-hidden flex justify-center items-center ${isChecked ? 'border-blue-400 bg-blue-400' : 'border-gray-500'}`}>
